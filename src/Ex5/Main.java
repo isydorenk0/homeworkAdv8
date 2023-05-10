@@ -1,12 +1,13 @@
 package Ex5;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        Thread threadMain = new MyMainThread();
-        Thread otherThread = new MyOtherThread();
+    public static void main(String[] args) {
+        LockUnlock lock = new LockUnlock();
+
+        Thread threadMain = new MyMainThread("Main", lock );
+        Thread threadOther = new MyMainThread("Other", lock);
 
         threadMain.start();
-        threadMain.join(600);
-        otherThread.start();
+        threadOther.start();
     }
 }
